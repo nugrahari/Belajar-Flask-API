@@ -1,0 +1,23 @@
+version: "3"
+services:
+  cron:
+    build: $PWD/cron
+    volumes:
+      - $PWD/cron/app:/app
+    environment:
+      - CRON_API_HOST
+      - CRON_API_PORT
+      - CRON_API_TOKEN
+      - CRON_TIME_WAIT
+      - GOOGLE_APPLICATION_CREDENTIALS
+
+    restart: unless-stopped
+    networks: 
+      - srs_test_default
+
+    command:  ["python", "update_patients.py"]
+
+
+networks:
+  srs_test_default:
+    external: true

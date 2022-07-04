@@ -1,0 +1,10 @@
+__pycache__/
+mysql
+*.jpeg
+*.jpg
+*.png
+*.json
+.env
+Env
+Env37
+*.h5

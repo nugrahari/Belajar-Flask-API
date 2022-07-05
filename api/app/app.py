@@ -9,7 +9,7 @@ def index():
   	'title' : 'SRS Delman',
   	'message' : 'Welcome to Sistem Rumah Sakit Delman'
   }
-  return jsonify(response_schemas)
+  return response_schemas
 
 if __name__ == '__main__':
     app.run(debug=True)

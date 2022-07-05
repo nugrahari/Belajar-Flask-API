@@ -39,7 +39,8 @@ class EmployeeServices():
 		
 		if sha256_crypt.verify(login_data.password, db_data.password):
 			print("True")
-			expires = datetime.timedelta(days=1)
+			expires = datetime.timedelta()
+			# expires = datetime.timedelta(days=1)
 			expires_refresh = datetime.timedelta(days=3)
 
 			access_token = create_access_token({'id': db_data.id, 'username': db_data.username}, 

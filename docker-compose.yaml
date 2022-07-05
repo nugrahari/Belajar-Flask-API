@@ -17,6 +17,8 @@ services:
       - SRS_DB
       - SRS_USER
       - SRS_PASSWORD
+      - TEST_HOST
+      - TEST_PORT
 
     restart: unless-stopped
     depends_on:

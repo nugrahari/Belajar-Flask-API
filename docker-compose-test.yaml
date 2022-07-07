@@ -1,11 +1,11 @@
 version: "3.8"
 services:
-  api:
+  api_test:
     build: $PWD/api
     volumes:
       - $PWD/api/app:/app
     ports:
-      - "28088:5000"
+      - "28089:5000"
     environment:
       - FLASK_ENV
       - DEBUG
@@ -19,11 +19,15 @@ services:
       - SRS_PASSWORD
       - TEST_HOST
       - TEST_PORT
+      - TEST
+
 
     restart: unless-stopped
+
     depends_on:
       - db
     command:  ["flask", "run", "--host=0.0.0.0"]
+
   db:
     build: $PWD/db
     volumes:
@@ -39,7 +43,7 @@ services:
   db-admin:
     image: adminer
     ports:
-      - 8081:8080
+      - 8082:8080
     restart: unless-stopped
     depends_on:
       - db

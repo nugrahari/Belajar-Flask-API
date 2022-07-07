@@ -16,16 +16,10 @@ class Settings(BaseSettings):
 
 	class DB:
 		HOST: str = os.getenv('SRS_DB_HOST')
+		DB: Optional[str] = os.getenv('SRS_DB') if os.getenv('TEST') is None else 'srs_test'
+		USER: Optional[str] = os.getenv('SRS_USER') if os.getenv('TEST') is None else 'srs_test'
+		PASSWORD: Optional[str] = os.getenv('SRS_PASSWORD') if os.getenv('TEST') is None else 'srs_test'
 		PORT: str = os.getenv('SRS_DB_PORT')
-		DB: str = os.getenv('SRS_DB')
-		USER: str = os.getenv('SRS_USER')
-		PASSWORD: str = os.getenv('SRS_PASSWORD')
-
-
-
-
-
-
 
 
 settings: Settings = Settings()

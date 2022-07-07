@@ -5,24 +5,29 @@ from uuid import UUID
 
 from pydantic import BaseModel, constr
 
-
-class Employee(BaseModel):
-    id          : Optional[int] 
+class PostEmployee(BaseModel):
     name        : Optional[str] = None
     username    : Optional[str] = None
     gender      : Optional[str] = None
     birthdate   : Optional[date] = None
-
-    class Config:
-        orm_mode = True
+    password    : str
 
 
-class PutEmployee(Employee):
+
+class PutEmployee(BaseModel):
+    name        : Optional[str] = None
+    username    : Optional[str] = None
+    gender      : Optional[str] = None
+    birthdate   : Optional[date] = None
+    
     password    : Optional[str] = None
 
 
-class PostEmployee(Employee):
-    password    : str
+class Employee(PutEmployee):
+    id          : Optional[int] 
+
+    class Config:
+        orm_mode = True
 
 
 class EmployeesOut(BaseModel):

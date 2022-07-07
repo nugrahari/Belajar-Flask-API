@@ -2,8 +2,7 @@ import os
 import requests
 
 url_base = 'http://127.0.0.1:5000/'
-token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjU3MDAwOTUwLCJqdGkiOiJlZDkzN2FlOC1jMDhmLTQ4MDMtYTU4Mi1jMGNhNDQ4ZTcwYjciLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjp7ImlkIjoxMCwidXNlcm5hbWUiOiJ6dWJhaXIifSwibmJmIjoxNjU3MDAwOTUwfQ.Wn3hI0AvTaFQJcWiAj8RwGV4QCsl9-juVCjV1k-a4RY'
-# token = os.getenv('API_TOKEN')
+token = None
 id_doctor = None
 body = {}
 
@@ -13,8 +12,9 @@ def item_response(response):
 	assert 'data' in response
 
 
-def test_post():
+def test_post(admin1_token):
 	global token, id_doctor, body
+	token = admin1_token
 	url_post =  F'{url_base}doctors'
 	headers = {"Authorization": F"Bearer {token}"}
 	body = {

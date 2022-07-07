@@ -57,7 +57,7 @@ class EmployeeServices():
 		try:
 			return self.query.filter(models.EmployeeDB.username == username).one()
 		except NoResultFound as exc:
-			abort(make_response(jsonify(message="Username or Password is invalid"), 400))
+			abort(make_response(jsonify(message="Username is invalid"), 400))
 
 	def read_by_id(self, id_):
 		try:

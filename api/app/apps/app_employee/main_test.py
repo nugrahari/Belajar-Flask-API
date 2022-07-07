@@ -9,11 +9,13 @@ body = {}
 
 def test_login():
 	global token
-
+	
 	url_login = F'{url_base}login'
-	reqs = requests.post(url_login, data={'username':'zubair', 'password':'abcd1234'})
-	assert reqs.status_code == 200
+	reqs = requests.post(url_login, data={'username':"adminsatu", 'password':"admin1234"})
+
 	response = reqs.json()
+	
+	assert reqs.status_code == 200
 
 	assert 'message' in response
 	assert 'access_token' in response
@@ -27,8 +29,9 @@ def item_response(response):
 	assert 'data' in response
 
 
-def test_post():
+def test_post(admin1_token):
 	global token, id_employee, body
+	# token = admin1_token
 	url_post =  F'{url_base}employees'
 	headers = {"Authorization": F"Bearer {token}"}
 
@@ -43,7 +46,7 @@ def test_post():
 
 	assert reqs.status_code == 201
 	response = reqs.json()
-
+	
 	item_response(response)
 
 	data = response.get('data')
@@ -65,7 +68,7 @@ def test_get():
 
 	assert reqs.status_code == 200
 	response = reqs.json()
-
+	
 	item_response(response)
 
 

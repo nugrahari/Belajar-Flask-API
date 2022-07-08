@@ -43,12 +43,18 @@ $ ./scripts/dev/cron.sh
 
 > [Install docker & docker-compose](#docker) first
 
-create employee user and login first
-copy username, password and token and past on test files:
-- api/app/apps/app_employee/main_test.py (line 14)
-- api/app/apps/app_doctor/doctor_test.py (line 5)
-- api/app/apps/app_patient/patient_test.py (line 5)
-- api/app/apps/app_appointment/appointment_test.py (line 5)
+1. run service for testing :
+```sh
+$ cd /path/to/project/root/dir
+$ ./scripts/dev/up-test.sh
+```
+2. create user, password and database for testing
+```sql
+CREATE USER srs_test WITH PASSWORD 'srs_test';
+CREATE DATABASE srs_test;
+GRANT ALL PRIVILEGES ON DATABASE srs_test TO srs_test;
+```
+3. run pytest
 
 ```sh
 $ cd /path/to/project/root/dir
